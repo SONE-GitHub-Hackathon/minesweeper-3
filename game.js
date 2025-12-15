@@ -246,7 +246,14 @@ class Minesweeper {
     }
     
     updateMineCount() {
-        const flaggedCount = this.flagged.flat().filter(f => f).length;
+        let flaggedCount = 0;
+        for (let row = 0; row < this.rows; row++) {
+            for (let col = 0; col < this.cols; col++) {
+                if (this.flagged[row][col]) {
+                    flaggedCount++;
+                }
+            }
+        }
         document.getElementById('mine-count').textContent = this.totalMines - flaggedCount;
     }
     
