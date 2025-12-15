@@ -382,6 +382,9 @@ class MultiplayerMinesweeper extends Minesweeper {
         }
     }
 
+    // Simple Linear Congruential Generator (LCG) for deterministic random numbers
+    // This ensures all players get the same mine placement using the same seed
+    // Constants: multiplier=9301, increment=49297, modulus=233280
     seededRandom(seed) {
         return function() {
             seed = (seed * 9301 + 49297) % 233280;
