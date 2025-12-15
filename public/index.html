@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minesweeper</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Minesweeper</h1>
+        
+        <div id="auth-info" style="display: none; text-align: right; margin-bottom: 10px;">
+            <span id="username-display"></span>
+            <button id="profile-btn" style="margin-left: 10px;">Profil</button>
+            <button id="logout-btn" style="margin-left: 10px;">Logout</button>
+        </div>
+        
+        <div class="game-modes" style="margin-bottom: 20px;">
+            <button id="singleplayer-btn" class="mode-btn active">Einzelspieler</button>
+            <button id="multiplayer-btn" class="mode-btn">Multiplayer</button>
+        </div>
+        
+        <div id="singleplayer-mode">
+            <div class="game-info">
+                <div class="info-item">
+                    <span>Minen: </span>
+                    <span id="mine-count">10</span>
+                </div>
+                <div class="info-item">
+                    <span>Zeit: </span>
+                    <span id="timer">0</span>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button id="reset-btn">Neues Spiel</button>
+                <select id="difficulty">
+                    <option value="easy">Einfach (9x9, 10 Minen)</option>
+                    <option value="medium">Mittel (16x16, 40 Minen)</option>
+                    <option value="hard">Schwer (16x30, 99 Minen)</option>
+                </select>
+            </div>
+
+            <div id="game-board"></div>
+
+            <div id="game-status"></div>
+        </div>
+        
+        <div id="multiplayer-mode" style="display: none;">
+            <div id="multiplayer-lobby">
+                <h2>Multiplayer Lobby</h2>
+                <div class="lobby-controls">
+                    <button id="create-room-btn">Raum erstellen</button>
+                    <button id="refresh-rooms-btn">Räume aktualisieren</button>
+                </div>
+                <div id="rooms-list"></div>
+            </div>
+            
+            <div id="game-room" style="display: none;">
+                <h2 id="room-title"></h2>
+                <div id="players-list"></div>
+                <div id="game-chat">
+                    <div id="chat-messages"></div>
+                    <input type="text" id="chat-input" placeholder="Nachricht eingeben...">
+                    <button id="send-chat-btn">Senden</button>
+                </div>
+                <button id="start-game-btn" style="display: none;">Spiel starten</button>
+                <button id="leave-room-btn">Raum verlassen</button>
+                
+                <div id="multiplayer-game" style="display: none;">
+                    <div class="game-info">
+                        <div class="info-item">
+                            <span>Minen: </span>
+                            <span id="mp-mine-count">10</span>
+                        </div>
+                        <div class="info-item">
+                            <span>Zeit: </span>
+                            <span id="mp-timer">0</span>
+                        </div>
+                    </div>
+                    <div id="mp-game-board"></div>
+                    <div id="mp-game-status"></div>
+                    <div id="players-progress"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/game.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/multiplayer.js"></script>
+</body>
+</html>
