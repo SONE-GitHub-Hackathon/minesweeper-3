@@ -264,8 +264,32 @@ class Minesweeper {
         
         if (message.includes('Gewonnen')) {
             statusElement.classList.add('win');
+            this.saveGameResult(true);
         } else if (message.includes('Verloren')) {
             statusElement.classList.add('lose');
+            this.saveGameResult(false);
+        }
+    }
+    
+    // Save game result to backend (if user is logged in)
+    async saveGameResult(won) {
+        try {
+            await fetch('/api/game/result', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    difficulty: this.currentDifficulty,
+                    won: won,
+                    timeSeconds: this.timer,
+                    gameMode: 'single'
+                }),
+                credentials: 'include'
+            });
+        } catch (err) {
+            // Silently fail if user is not logged in or error occurs
+            console.log('Could not save game result:', err);
         }
     }
 }

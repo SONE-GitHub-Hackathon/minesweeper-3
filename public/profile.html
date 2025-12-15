@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil - Minesweeper</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/profile.css">
+</head>
+<body>
+    <div class="profile-container">
+        <h1>Benutzerprofil</h1>
+        
+        <div id="profile-info">
+            <h2>Benutzerinformationen</h2>
+            <p><strong>Benutzername:</strong> <span id="profile-username"></span></p>
+            <p><strong>Mitglied seit:</strong> <span id="profile-created"></span></p>
+        </div>
+        
+        <div id="profile-stats">
+            <h2>Spielstatistiken</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-value" id="total-games">0</span>
+                    <span class="stat-label">Gespielte Spiele</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="won-games">0</span>
+                    <span class="stat-label">Gewonnene Spiele</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="win-rate">0%</span>
+                    <span class="stat-label">Gewinnrate</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="best-time">-</span>
+                    <span class="stat-label">Beste Zeit</span>
+                </div>
+            </div>
+        </div>
+        
+        <div id="leaderboard">
+            <h2>Bestenliste</h2>
+            <table id="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th>Rang</th>
+                        <th>Spieler</th>
+                        <th>Gewonnene Spiele</th>
+                        <th>Gewinnrate</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboard-body"></tbody>
+            </table>
+        </div>
+        
+        <div class="profile-actions">
+            <button id="back-btn" onclick="window.location.href='/'">Zurück zum Spiel</button>
+            <button id="logout-btn">Logout</button>
+        </div>
+    </div>
+
+    <script src="/js/profile.js"></script>
+</body>
+</html>
